@@ -46,7 +46,7 @@
                 <b-icon
                   icon="circle-fill"
                   font-scale="1"
-                /><span class="font text-info"> {{ ele.rating }}</span>
+                /><span class="badge bg-info font text-light"> {{ ele.rating }}</span>
 
               </div>
             </div>
