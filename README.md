@@ -1,3 +1,4 @@
-# Vuexy - Vuejs, React, HTML & Laravel Admin Dashboard Template
-
-**Vuexy – Vuejs, React, HTML & Laravel Admin Dashboard Template** – is the most developer friendly & highly customizable Admin Dashboard Template based on Bootstrap 4, Bootstrap Vue & Reactstrap.
+#วิธีการใช้งาน
+1. clone https://github.com/peetphatcharee/ics-frontend.git
+2. run npm install
+3. http://localhost:8080/
