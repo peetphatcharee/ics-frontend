@@ -1,29 +1,52 @@
 <template>
   <div>
-    <b-card class="cards">
-      <div class="row m-0">
-        <!-- <div class="col-md-12">
-          <b-form-group
-            id="btn"
-            :class="{'col-md-12': hide, ' col-xs-12': !hide}"
+    <div class="my-content tab-wrp">
+      <ul
+        class="nav nav-pills"
+        role="tablist"
+      >
+        <li class="nav-item"  id="item-detailIn">
+          <button
+            id="info"
+            class="nav-link active"
+            data-bs-toggle="pill"
+            data-bs-target="#infomation"
+            role="tab"
+            aria-controls="pills-home"
+            aria-selected="true"
+            @click="showInfor"
           >
-            <b-form-radio-group
-              id="btn-radios-2"
-              v-model="selected"
-              :class="{'col-md-3': hide, ' col-xs-12': !hide}"
-              :options="options"
-              button-variant="primary"
-              name="radio-btn-outline"
-              class="col-xs-12"
-              buttons
-              @change="showHideDiv(selected)"
-            />
-          </b-form-group>
-        </div> -->
+            INFORMATION
+          </button>
+        </li>
+        <li class="nav-item"  id="item-detailIm">
+          <button
+            id="img"
+            class="nav-link"
+            data-bs-toggle="pill"
+            data-bs-target="#image"
+            role="tab"
+            aria-controls="pills-profile"
+            aria-selected="false"
+            @click="showImg"
+          >
+            IMAGE
+          </button>
 
+        </li>
+      </ul>
+    </div>
+    <b-card id="card-detail">
+      <div
+        id="pills-tabContent"
+        class="row m-0 tab-content"
+      >
+        <!-- infor -->
         <div
           id="infomation"
           class="col-md-6"
+          aria-labelledby="info"
+          :class="infor ? '' : 'hides'"
         >
           <b-card
             v-for="(ele, index) in detailArr"
@@ -78,10 +101,12 @@
           </b-card>
 
         </div>
-
+        <!-- img -->
         <div
-          id="img"
+          id="image"
           class="col-md-6"
+          aria-labelledby="img"
+          :class="img ? '' : 'hides'"
         >
           <b-card
             v-for="(ele, index) in detailArr"
@@ -119,6 +144,8 @@ import {
   BIcon,
   //  BCarousel,
   //  BCarouselSlide,
+  // BTab,
+  // BTabs,
 } from 'bootstrap-vue'
 import axios from 'axios'
 import data from '../data/example_data.json'
@@ -136,6 +163,8 @@ export default {
     BIcon,
     // BCarousel,
     // BCarouselSlide,
+    // BTab,
+    // BTabs,
 
   },
   data() {
@@ -152,12 +181,24 @@ export default {
 
       ],
       selected: '',
+      infor: false,
+      img: false,
     }
   },
   created() {
     this.detail()
+    this.infor = true
+    this.img = false
   },
   methods: {
+    showInfor() {
+      this.infor = true
+      this.img = false
+    },
+    showImg() {
+      this.img = true
+      this.infor = false
+    },
     showHideDiv(id) {
       console.log(id)
       if (id === '1') {
@@ -185,7 +226,6 @@ export default {
         }
       })
       this.detailArr = arrData
-      console.log(arrData)
     },
     onSlideStart() {
       this.sliding = true
@@ -296,15 +336,16 @@ export default {
   },
 }
 </script>
-
+<style lang="scss">
+  @import "~@/assets/css/place.css";
+</style>
 <style>
 .font {
   font-size: xx-small;
 }
-.cards {
-  background-color: #C4D3E9;
-}
+
 .img {
   max-height: 10rem;
 }
+
 </style>

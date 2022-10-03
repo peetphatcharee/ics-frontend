@@ -12,7 +12,6 @@
         <span class="user-status">{{ userData.role }}</span>
       </div>
       <b-avatar
-        size="40"
         :src="userData.avatar"
         variant="light-primary"
         badge
@@ -160,3 +159,6 @@ export default {
   },
 }
 </script>
+<style lang="scss">
+  @import "~@/assets/css/place.css";
+</style>
